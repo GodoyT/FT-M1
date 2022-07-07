@@ -21,15 +21,11 @@ function nFactorial(n) {
 }
 
 function nFibonacci(n) {
- if (n === 0){
-  return 0;
- } else if (n === 1) {
-  return 1;
- } else if (n < 0){
-  return "Error";
- } else {
-  return nFibonacci(n - 1) + nFibonacci(n - 2);
- }
+ if (n === 0) return 0;
+ else if (n === 1) return 1;
+ else if (n < 0) return "Error";
+ else return nFibonacci(n - 1) + nFibonacci(n - 2);
+ 
 }
 
 /*
