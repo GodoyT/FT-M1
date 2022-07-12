@@ -11,23 +11,23 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
   En caso de que la búsqueda no arroje resultados, search debe retornar null.
 */
 
-function LinkedList() {
+function LinkedList() { // Contructor Lista
   this.head = null;
   this.size = 0;
 }
 
-function Node(value) {
+function Node(value) { //Constructor Nodo
   this.value = value;
   this.next = null;
 }
 
 LinkedList.prototype.add = function(value){
-  let refe = this.head;
-  if (this.head === null) { 
+  let refe = this.head; // referencia al siguiente nodo
+  if (this.head === null) { // si esta vacio se crea el nodo
     this.head = new Node(value);
     this.size++;
     return this.head;
-  } else {
+  } else { // si no se itera cambiando hasta que la ultima posicion
     while (refe.next){
       refe = refe.next;
     }
@@ -39,7 +39,7 @@ LinkedList.prototype.add = function(value){
 
 LinkedList.prototype.remove = function(){
   
-  if (!this.head) return null;
+  if (!this.head) return null; //si la lista esta vacia devuelve null
 
   if (this.head.next === null) {
     let value = this.head.value
@@ -48,10 +48,10 @@ LinkedList.prototype.remove = function(){
   }
 
   let refe = this.head;
-  while (refe.next.next){
+  while (refe.next.next){ // se va al penultimo para poder desconectarle la referencia
     refe = refe.next;
   }
-  let value = refe.next.value;
+  let value = refe.next.value; // guarda el nodo
   refe.next = null;
   return value;
 }
@@ -59,15 +59,15 @@ LinkedList.prototype.remove = function(){
 LinkedList.prototype.search = function(value){
   let refe = this.head;
   
-  if (!refe) return null;
+  if (!refe) return null;//verifica si hay un nodo cabeza
 
-  while (refe){
-    if (typeof value === 'function'){
-      if (value(refe.value)){
+  while (refe){ //revisa si hay un nodo y si hay es como un true y sigue el bucle hasta que sea false
+    if (typeof value === 'function'){// comprueba que sea una function
+      if (value(refe.value)){//revisa si el valor ingresado coinside con el de la funcion llamada
         return refe.value;
       }
     } else {
-    if (refe.value === value){
+    if (refe.value === value){//si no es una funcion comprueba el valor ingreseado sea igual al del nodo
       return value;
     }
   }
